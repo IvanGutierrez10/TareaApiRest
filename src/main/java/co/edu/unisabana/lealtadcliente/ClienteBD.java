@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table (name = "Clientes")
+@Table (name = "clientes")
 public class ClienteBD {
     @Id
     @Column
