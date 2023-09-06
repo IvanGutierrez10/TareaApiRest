@@ -1,4 +1,4 @@
-package co.edu.unisabana.lealtadcliente;
+package co.edu.unisabana.lealtadcliente.controller.dto;
 
 public class ProductoRedimibleDTO {
     private String nombre;

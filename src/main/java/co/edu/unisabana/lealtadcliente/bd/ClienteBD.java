@@ -1,4 +1,4 @@
-package co.edu.unisabana.lealtadcliente;
+package co.edu.unisabana.lealtadcliente.bd;
 
 import lombok.Data;
 
