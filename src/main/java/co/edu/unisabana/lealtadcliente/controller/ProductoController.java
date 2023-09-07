@@ -15,7 +15,7 @@ public class ProductoController {
         Logica = logica;
     }
 
-    @PutMapping(path = "/redimirproducto/{id}/{cedula}")
+    @PutMapping(path = "/productos/redimirproducto/{id}/{cedula}")
     public RespuestaDTO redimirProducto(@PathVariable int id, @PathVariable int cedula){
         if(this.Logica.puntosSuficientes(id,cedula)){
             this.Logica.realizarCanjeo(id,cedula);

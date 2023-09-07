@@ -2,11 +2,9 @@ package co.edu.unisabana.lealtadcliente.bd;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -25,5 +23,4 @@ public class ClienteBD {
     private LocalDateTime fecha_creacion;
     @Column
     private LocalDateTime fecha_actualizacion;
-
 }

@@ -19,8 +19,8 @@ public class ClienteController {
         this.logica = logica;
     }
 
-    @PutMapping(path="/cliente/actualizarpuntos")
-    public RespuestaDTO actualizarPuntos(@RequestParam int cedula, @RequestParam int nuevosPuntos){
+    @PutMapping(path="/cliente/actualizarpuntos/{cedula}/{nuevosPuntos}")
+    public RespuestaDTO actualizarPuntos(@PathVariable int cedula, @PathVariable int nuevosPuntos){
         this.logica.actualizarPuntos(cedula,nuevosPuntos);
         return new RespuestaDTO("Puntos actualizados con exito");
     }

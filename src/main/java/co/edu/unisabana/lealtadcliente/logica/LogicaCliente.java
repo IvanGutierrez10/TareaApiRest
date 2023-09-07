@@ -32,7 +32,4 @@ public class LogicaCliente {
         cliente.setFecha_actualizacion(LocalDateTime.now());
         this.clienteRepository.save(cliente);
     }
-    public void crearCliente(int cedula, String Nombre, String Apellido){
-
-    }
 }

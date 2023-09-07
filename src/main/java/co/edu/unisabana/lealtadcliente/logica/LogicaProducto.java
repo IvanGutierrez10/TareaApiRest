@@ -12,10 +12,13 @@ public class LogicaProducto {
     private ClienteRepository clienteRepository;
     private LogicaCliente logicaCliente;
 
-    public LogicaProducto(ProductoRepository productoRepository, ClienteRepository clienteRepository, LogicaCliente logicaCliente) {
+    private LogicaCompra logicaCompra;
+
+    public LogicaProducto(ProductoRepository productoRepository, ClienteRepository clienteRepository, LogicaCliente logicaCliente, LogicaCompra logicaCompra) {
         this.productoRepository = productoRepository;
         this.clienteRepository = clienteRepository;
         this.logicaCliente = logicaCliente;
+        this.logicaCompra = logicaCompra;
     }
 
     public boolean puntosSuficientes(int id, int cedula){
@@ -31,6 +34,7 @@ public class LogicaProducto {
         ClienteBD cliente = this.clienteRepository.getReferenceById(cedula);
         ProductoRedimibleBD producto = this.productoRepository.getReferenceById(id);
         int nuevosPuntos = cliente.getPuntos()-producto.getValor();
+        this.logicaCompra.agregarCompra(id, cliente);
         this.logicaCliente.actualizarPuntos(cedula,nuevosPuntos);
     }
 }
