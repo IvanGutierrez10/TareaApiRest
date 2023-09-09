@@ -44,7 +44,9 @@ public class LogicaCompra {
     }
 
     public List<CompraBD> obtenerCompras(int cedula){
-        ClienteBD cliente = this.clienteRepository.getReferenceById(cedula);
+        ClienteBD cliente = this.clienteRepository.findById(cedula).orElseThrow(() ->
+                new RuntimeException("No existe ningun usuario registrado con esta cedula"));
         return cliente.getCompras();
     }
+
 }

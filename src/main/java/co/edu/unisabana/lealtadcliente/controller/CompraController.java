@@ -2,6 +2,7 @@ package co.edu.unisabana.lealtadcliente.controller;
 
 import co.edu.unisabana.lealtadcliente.bd.ClienteBD;
 import co.edu.unisabana.lealtadcliente.bd.CompraBD;
+import co.edu.unisabana.lealtadcliente.controller.dto.RespuestaDTO;
 import co.edu.unisabana.lealtadcliente.logica.LogicaCompra;
 import com.mysql.cj.xdevapi.Client;
 import lombok.AllArgsConstructor;
