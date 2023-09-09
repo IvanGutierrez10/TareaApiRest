@@ -7,6 +7,7 @@ import co.edu.unisabana.lealtadcliente.controller.dto.RespuestaDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -42,6 +43,10 @@ public class LogicaCliente {
         else {
             return new RespuestaDTO("No existe ningun usuario registrado con esa cedula");
         }
+    }
+
+    public List<ClienteBD> mostrarClientes(){
+        return this.clienteRepository.findAll();
     }
 
     public boolean clienteExiste (int cedula){

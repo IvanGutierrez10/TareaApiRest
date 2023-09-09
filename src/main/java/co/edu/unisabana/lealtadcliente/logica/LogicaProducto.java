@@ -26,6 +26,10 @@ public class LogicaProducto {
         this.productoRepository.save(nuevoProducto);
     }
 
+    public List<ProductoRedimibleBD> mostrarProductos(){
+        return this.productoRepository.findAll();
+    }
+
     public int generarID(){
         int id=0;
         List<ProductoRedimibleBD> productos = this.productoRepository.findAll();
