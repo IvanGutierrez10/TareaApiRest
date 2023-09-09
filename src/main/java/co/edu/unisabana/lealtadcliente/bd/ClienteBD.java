@@ -23,4 +23,7 @@ public class ClienteBD {
     private LocalDateTime fecha_creacion;
     @Column
     private LocalDateTime fecha_actualizacion;
+    @OneToMany (cascade = CascadeType.ALL)
+    @JoinColumn (name = "cedula_usuario")
+    private List<CompraBD> compras;
 }

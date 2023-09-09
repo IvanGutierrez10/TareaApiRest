@@ -3,17 +3,16 @@ package co.edu.unisabana.lealtadcliente.logica;
 import co.edu.unisabana.lealtadcliente.bd.ClienteBD;
 import co.edu.unisabana.lealtadcliente.bd.ClienteRepository;
 import co.edu.unisabana.lealtadcliente.controller.dto.ClienteDTO;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
 @Service
+@AllArgsConstructor
 public class LogicaCliente {
-    private ClienteRepository clienteRepository;
 
-    public LogicaCliente(ClienteRepository clienteRepository) {
-        this.clienteRepository = clienteRepository;
-    }
+    private ClienteRepository clienteRepository;
 
     public void agregarUsuario(ClienteDTO clienteDTO){
         ClienteBD clienteBD = new ClienteBD();

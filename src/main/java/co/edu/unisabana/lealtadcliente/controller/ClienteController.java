@@ -4,20 +4,17 @@ import co.edu.unisabana.lealtadcliente.bd.ClienteRepository;
 import co.edu.unisabana.lealtadcliente.controller.dto.ClienteDTO;
 import co.edu.unisabana.lealtadcliente.controller.dto.RespuestaDTO;
 import co.edu.unisabana.lealtadcliente.logica.LogicaCliente;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-
+@AllArgsConstructor
 @RestController
 public class ClienteController {
 
     private LogicaCliente logica;
-
-    public ClienteController(LogicaCliente logica) {
-        this.logica = logica;
-    }
 
     @PutMapping(path="/cliente/actualizarpuntos/{cedula}/{nuevosPuntos}")
     public RespuestaDTO actualizarPuntos(@PathVariable int cedula, @PathVariable int nuevosPuntos){

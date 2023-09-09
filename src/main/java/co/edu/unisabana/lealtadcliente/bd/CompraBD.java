@@ -1,7 +1,6 @@
 package co.edu.unisabana.lealtadcliente.bd;
 
 import lombok.Data;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -12,9 +11,8 @@ public class CompraBD {
     @Id
     @Column
     private int id_compra;
-    @ManyToOne
-    @JoinColumn(name = "cedula_usuario")
-    private ClienteBD clienteBD;
+    @Column
+    private int cedula_usuario;
     @Column
     private int id_producto;
     @Column
