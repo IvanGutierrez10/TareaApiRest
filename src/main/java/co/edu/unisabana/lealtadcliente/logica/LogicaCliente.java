@@ -6,9 +6,7 @@ import co.edu.unisabana.lealtadcliente.controller.dto.ClienteDTO;
 import co.edu.unisabana.lealtadcliente.controller.dto.RespuestaDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor

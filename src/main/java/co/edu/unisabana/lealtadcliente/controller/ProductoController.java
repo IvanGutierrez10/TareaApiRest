@@ -1,7 +1,5 @@
 package co.edu.unisabana.lealtadcliente.controller;
 
-import co.edu.unisabana.lealtadcliente.bd.ProductoRedimibleBD;
-import co.edu.unisabana.lealtadcliente.controller.dto.ClienteDTO;
 import co.edu.unisabana.lealtadcliente.controller.dto.ProductoRedimibleDTO;
 import co.edu.unisabana.lealtadcliente.controller.dto.RespuestaDTO;
 import co.edu.unisabana.lealtadcliente.logica.LogicaProducto;

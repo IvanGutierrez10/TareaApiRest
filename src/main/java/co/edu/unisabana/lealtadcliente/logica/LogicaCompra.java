@@ -5,11 +5,8 @@ import co.edu.unisabana.lealtadcliente.bd.ClienteRepository;
 import co.edu.unisabana.lealtadcliente.bd.CompraBD;
 import co.edu.unisabana.lealtadcliente.bd.CompraRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
