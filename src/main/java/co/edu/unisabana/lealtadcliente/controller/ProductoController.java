@@ -21,10 +21,6 @@ public class ProductoController {
     }
     @PutMapping(path = "/productos/redimirproducto/{id}/{cedula}")
     public RespuestaDTO redimirProducto(@PathVariable int id, @PathVariable int cedula){
-        if(this.Logica.puntosSuficientes(id,cedula)){
-            this.Logica.realizarCanjeo(id,cedula);
-            return new RespuestaDTO("Canjeo realizado con exito");
-        }
-        return new RespuestaDTO("Error: Puntos insuficientes");
+        return this.Logica.realizarCanjeo(id, cedula);
     }
 }

@@ -2,6 +2,7 @@ package co.edu.unisabana.lealtadcliente.logica;
 
 import co.edu.unisabana.lealtadcliente.bd.*;
 import co.edu.unisabana.lealtadcliente.controller.dto.ProductoRedimibleDTO;
+import co.edu.unisabana.lealtadcliente.controller.dto.RespuestaDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -48,12 +49,24 @@ public class LogicaProducto {
         return false;
     }
 
-    public void realizarCanjeo(int id, int cedula){
-        ClienteBD cliente = this.clienteRepository.getReferenceById(cedula);
-        ProductoRedimibleBD producto = this.productoRepository.getReferenceById(id);
-        int nuevosPuntos = cliente.getPuntos()-producto.getValor();
-        this.logicaCliente.actualizarPuntos(cedula, nuevosPuntos);
-        this.logicaCompra.agregarCompra(id, cedula);
+    public RespuestaDTO realizarCanjeo(int id, int cedula){
+        boolean clienteExiste = this.clienteRepository.existsById(cedula);
+        if(clienteExiste){
+            if(puntosSuficientes(id,cedula)){
+                ClienteBD cliente = this.clienteRepository.getReferenceById(cedula);
+                ProductoRedimibleBD producto = this.productoRepository.getReferenceById(id);
+                int nuevosPuntos = cliente.getPuntos()-producto.getValor();
+                this.logicaCliente.actualizarPuntos(cedula, nuevosPuntos);
+                this.logicaCompra.agregarCompra(id, cedula);
+                return new RespuestaDTO("Canjeo realizado con exito");
+            }
+            else {
+                return new RespuestaDTO("Cantidad de puntos insuficientes");
+            }
+        }
+        else {
+            return new RespuestaDTO("El usuario ingresado no existe");
+        }
     }
 
 }
