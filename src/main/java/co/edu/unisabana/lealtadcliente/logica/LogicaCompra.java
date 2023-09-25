@@ -25,7 +25,7 @@ public class LogicaCompra {
         else {
             int tamano = compras.size()-1;
             CompraBD ultimaCompra = compras.get(tamano);
-            id=ultimaCompra.getId_compra()+1;
+            id=ultimaCompra.getIdCompra()+1;
         }
 
         return id;
@@ -33,10 +33,10 @@ public class LogicaCompra {
 
     public void agregarCompra(int id, int cedula){
         CompraBD compraBD = new CompraBD();
-        compraBD.setCedula_usuario(cedula);
-        compraBD.setId_compra(generarID());
-        compraBD.setId_producto(id);
-        compraBD.setFecha_transaccion(LocalDateTime.now());
+        compraBD.setCedulaUsuario(cedula);
+        compraBD.setIdCompra(generarID());
+        compraBD.setIdProdcuto(id);
+        compraBD.setFechaTransaccion(LocalDateTime.now());
         this.compraRepository.save(compraBD);
     }
 

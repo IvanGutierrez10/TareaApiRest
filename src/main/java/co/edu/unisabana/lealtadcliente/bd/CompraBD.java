@@ -9,12 +9,12 @@ import java.time.LocalDateTime;
 @Table (name = "compras")
 public class CompraBD {
     @Id
-    @Column
-    private int id_compra;
-    @Column
-    private int cedula_usuario;
-    @Column
-    private int id_producto;
-    @Column
-    private LocalDateTime fecha_transaccion;
+    @Column (name = "id_compra")
+    private int idCompra;
+    @Column (name = "cedula_usuario")
+    private int cedulaUsuario;
+    @Column (name = "id_producto")
+    private int idProdcuto;
+    @Column (name = "fecha_transaccion")
+    private LocalDateTime fechaTransaccion;
 }

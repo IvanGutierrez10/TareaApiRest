@@ -25,8 +25,8 @@ public class LogicaCliente {
             clienteBD.setNombre(clienteDTO.getNombre());
             clienteBD.setApellido(clienteDTO.getApellido());
             clienteBD.setPuntos(0);
-            clienteBD.setFecha_creacion(LocalDateTime.now());
-            clienteBD.setFecha_actualizacion(LocalDateTime.now());
+            clienteBD.setFechaCreacion(LocalDateTime.now());
+            clienteBD.setFechaActualizacion(LocalDateTime.now());
             this.clienteRepository.save(clienteBD);
             return new RespuestaDTO("Cliente creado con exito");
         }
@@ -36,7 +36,7 @@ public class LogicaCliente {
         if(clienteExiste(cedula)){
             ClienteBD cliente = this.clienteRepository.getReferenceById(cedula);
             cliente.setPuntos(nuevosPuntos);
-            cliente.setFecha_actualizacion(LocalDateTime.now());
+            cliente.setFechaActualizacion(LocalDateTime.now());
             this.clienteRepository.save(cliente);
             return new RespuestaDTO("Los puntos del cliente han sido actualizados");
         }

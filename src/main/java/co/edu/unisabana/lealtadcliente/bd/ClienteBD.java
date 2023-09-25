@@ -19,10 +19,10 @@ public class ClienteBD {
     private String apellido;
     @Column
     private int puntos;
-    @Column
-    private LocalDateTime fecha_creacion;
-    @Column
-    private LocalDateTime fecha_actualizacion;
+    @Column (name = "fecha_creacion")
+    private LocalDateTime fechaCreacion;
+    @Column (name = "fecha_actualizacion")
+    private LocalDateTime fechaActualizacion;
     @OneToMany (cascade = CascadeType.ALL)
     @JoinColumn (name = "cedula_usuario")
     private List<CompraBD> compras;
