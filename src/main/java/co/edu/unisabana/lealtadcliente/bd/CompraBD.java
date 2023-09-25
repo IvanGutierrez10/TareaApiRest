@@ -6,15 +6,15 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table (name = "compras")
+@Table(name = "compras")
 public class CompraBD {
     @Id
-    @Column (name = "id_compra")
+    @Column(name = "id_compra")
     private int idCompra;
-    @Column (name = "cedula_usuario")
+    @Column(name = "cedula_usuario")
     private int cedulaUsuario;
-    @Column (name = "id_producto")
+    @Column(name = "id_producto")
     private int idProdcuto;
-    @Column (name = "fecha_transaccion")
+    @Column(name = "fecha_transaccion")
     private LocalDateTime fechaTransaccion;
 }

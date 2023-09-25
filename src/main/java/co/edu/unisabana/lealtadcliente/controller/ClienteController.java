@@ -17,17 +17,17 @@ public class ClienteController {
     private LogicaCliente logica;
 
     @GetMapping(path = "/cliente/mostrartodos")
-    public List<ClienteBD> mostrarClientes(){
+    public List<ClienteBD> mostrarClientes() {
         return this.logica.mostrarClientes();
     }
 
-    @PutMapping(path="/cliente/actualizarpuntos/{cedula}/{nuevosPuntos}")
-    public RespuestaDTO actualizarPuntos(@PathVariable int cedula, @PathVariable int nuevosPuntos){
-        return this.logica.actualizarPuntos(cedula,nuevosPuntos);
+    @PutMapping(path = "/cliente/actualizarpuntos/{cedula}/{nuevosPuntos}")
+    public RespuestaDTO actualizarPuntos(@PathVariable int cedula, @PathVariable int nuevosPuntos) {
+        return this.logica.actualizarPuntos(cedula, nuevosPuntos);
     }
 
-    @PostMapping(path="/cliente/agregar")
-    public RespuestaDTO agregarCliente(@RequestBody ClienteDTO clienteDTO){
+    @PostMapping(path = "/cliente/agregar")
+    public RespuestaDTO agregarCliente(@RequestBody ClienteDTO clienteDTO) {
         return this.logica.agregarUsuario(clienteDTO);
     }
 }

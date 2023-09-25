@@ -5,7 +5,6 @@ import co.edu.unisabana.lealtadcliente.controller.dto.ProductoRedimibleDTO;
 import co.edu.unisabana.lealtadcliente.controller.dto.RespuestaDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -17,7 +16,7 @@ public class LogicaProducto {
     private LogicaCompra logicaCompra;
     private LogicaCliente logicaCliente;
 
-    public void agregarProducto(ProductoRedimibleDTO productoRedimibleDTO){
+    public void agregarProducto(ProductoRedimibleDTO productoRedimibleDTO) {
         ProductoRedimibleBD nuevoProducto = new ProductoRedimibleBD();
         nuevoProducto.setId(generarID());
         nuevoProducto.setNombre(productoRedimibleDTO.getNombre());
@@ -26,49 +25,46 @@ public class LogicaProducto {
         this.productoRepository.save(nuevoProducto);
     }
 
-    public List<ProductoRedimibleBD> mostrarProductos(){
+    public List<ProductoRedimibleBD> mostrarProductos() {
         return this.productoRepository.findAll();
     }
 
-    public int generarID(){
-        int id=0;
+    public int generarID() {
+        int id = 0;
         List<ProductoRedimibleBD> productos = this.productoRepository.findAll();
-        if(productos.isEmpty()){
-            id=1;
-        }
-        else {
-            int tamano = productos.size()-1;
+        if (productos.isEmpty()) {
+            id = 1;
+        } else {
+            int tamano = productos.size() - 1;
             ProductoRedimibleBD ultimoProducto = productos.get(tamano);
-            id=ultimoProducto.getId()+1;
+            id = ultimoProducto.getId() + 1;
         }
         return id;
     }
 
-    public boolean puntosSuficientes(int id, int cedula){
+    public boolean puntosSuficientes(int id, int cedula) {
         ClienteBD cliente = this.clienteRepository.getReferenceById(cedula);
         ProductoRedimibleBD producto = this.productoRepository.getReferenceById(id);
-        if(cliente.getPuntos()>=producto.getValor()){
+        if (cliente.getPuntos() >= producto.getValor()) {
             return true;
         }
         return false;
     }
 
-    public RespuestaDTO realizarCanjeo(int id, int cedula){
+    public RespuestaDTO realizarCanjeo(int id, int cedula) {
         boolean clienteExiste = this.clienteRepository.existsById(cedula);
-        if(clienteExiste){
-            if(puntosSuficientes(id,cedula)){
+        if (clienteExiste) {
+            if (puntosSuficientes(id, cedula)) {
                 ClienteBD cliente = this.clienteRepository.getReferenceById(cedula);
                 ProductoRedimibleBD producto = this.productoRepository.getReferenceById(id);
-                int nuevosPuntos = cliente.getPuntos()-producto.getValor();
+                int nuevosPuntos = cliente.getPuntos() - producto.getValor();
                 this.logicaCliente.actualizarPuntos(cedula, nuevosPuntos);
                 this.logicaCompra.agregarCompra(id, cedula);
                 return new RespuestaDTO("Canjeo realizado con exito");
-            }
-            else {
+            } else {
                 return new RespuestaDTO("Cantidad de puntos insuficientes");
             }
-        }
-        else {
+        } else {
             return new RespuestaDTO("El usuario ingresado no existe");
         }
     }

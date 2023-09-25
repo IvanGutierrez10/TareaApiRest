@@ -16,18 +16,18 @@ public class ProductoController {
     private LogicaProducto Logica;
 
     @GetMapping(path = "/productos/mostrartodos")
-    public List<ProductoRedimibleBD> mostrarProductos(){
+    public List<ProductoRedimibleBD> mostrarProductos() {
         return this.Logica.mostrarProductos();
     }
 
-    @PostMapping(path="/productos/agregar")
-    public RespuestaDTO agregarProducto(@RequestBody ProductoRedimibleDTO productoRedimibleDTO){
+    @PostMapping(path = "/productos/agregar")
+    public RespuestaDTO agregarProducto(@RequestBody ProductoRedimibleDTO productoRedimibleDTO) {
         this.Logica.agregarProducto(productoRedimibleDTO);
         return new RespuestaDTO("Producto creado exitosamente");
     }
 
     @PutMapping(path = "/productos/redimirproducto/{id}/{cedula}")
-    public RespuestaDTO redimirProducto(@PathVariable int id, @PathVariable int cedula){
+    public RespuestaDTO redimirProducto(@PathVariable int id, @PathVariable int cedula) {
         return this.Logica.realizarCanjeo(id, cedula);
     }
 }

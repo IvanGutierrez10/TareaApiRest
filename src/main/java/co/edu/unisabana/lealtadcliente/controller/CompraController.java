@@ -16,7 +16,7 @@ public class CompraController {
     private final LogicaCompra logicaCompra;
 
     @GetMapping(path = "/compras/historial/{cedula}")
-    public List<CompraBD> obtenerHistorial(@PathVariable int cedula){
+    public List<CompraBD> obtenerHistorial(@PathVariable int cedula) {
         return this.logicaCompra.obtenerCompras(cedula);
     }
 }

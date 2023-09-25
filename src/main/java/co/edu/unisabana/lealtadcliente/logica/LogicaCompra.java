@@ -6,6 +6,7 @@ import co.edu.unisabana.lealtadcliente.bd.CompraBD;
 import co.edu.unisabana.lealtadcliente.bd.CompraRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,24 +15,23 @@ import java.util.List;
 public class LogicaCompra {
 
     private CompraRepository compraRepository;
-    private  ClienteRepository clienteRepository;
+    private ClienteRepository clienteRepository;
 
-    public int generarID(){
-        int id=0;
+    public int generarID() {
+        int id = 0;
         List<CompraBD> compras = this.compraRepository.findAll();
-        if(compras.isEmpty()){
-            id=1;
-        }
-        else {
-            int tamano = compras.size()-1;
+        if (compras.isEmpty()) {
+            id = 1;
+        } else {
+            int tamano = compras.size() - 1;
             CompraBD ultimaCompra = compras.get(tamano);
-            id=ultimaCompra.getIdCompra()+1;
+            id = ultimaCompra.getIdCompra() + 1;
         }
 
         return id;
     }
 
-    public void agregarCompra(int id, int cedula){
+    public void agregarCompra(int id, int cedula) {
         CompraBD compraBD = new CompraBD();
         compraBD.setCedulaUsuario(cedula);
         compraBD.setIdCompra(generarID());
@@ -40,7 +40,7 @@ public class LogicaCompra {
         this.compraRepository.save(compraBD);
     }
 
-    public List<CompraBD> obtenerCompras(int cedula){
+    public List<CompraBD> obtenerCompras(int cedula) {
         ClienteBD cliente = this.clienteRepository.findById(cedula).orElseThrow(() ->
                 new RuntimeException("No existe ningun usuario registrado con esta cedula"));
         return cliente.getCompras();
