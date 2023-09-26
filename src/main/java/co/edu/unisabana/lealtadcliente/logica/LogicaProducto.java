@@ -1,11 +1,14 @@
 package co.edu.unisabana.lealtadcliente.logica;
 
 import co.edu.unisabana.lealtadcliente.bd.*;
+import co.edu.unisabana.lealtadcliente.controller.dto.ClienteDTO;
+import co.edu.unisabana.lealtadcliente.controller.dto.CompraDTO;
 import co.edu.unisabana.lealtadcliente.controller.dto.ProductoRedimibleDTO;
 import co.edu.unisabana.lealtadcliente.controller.dto.RespuestaDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -25,8 +28,12 @@ public class LogicaProducto {
         this.productoRepository.save(nuevoProducto);
     }
 
-    public List<ProductoRedimibleBD> mostrarProductos() {
-        return this.productoRepository.findAll();
+    public List<ProductoRedimibleDTO> mostrarProductos() {
+        return this.productoRepository.findAll()
+                .stream()
+                .map(ProductoRedimibleBD -> new ProductoRedimibleDTO(ProductoRedimibleBD.getNombre(),
+                        CategoriaProductoEnum.valueOf(ProductoRedimibleBD.getCategoria()),
+                        ProductoRedimibleBD.getValor())).collect(Collectors.toList());
     }
 
     public int generarID() {
@@ -59,7 +66,7 @@ public class LogicaProducto {
                 ProductoRedimibleBD producto = this.productoRepository.getReferenceById(id);
                 int nuevosPuntos = cliente.getPuntos() - producto.getValor();
                 this.logicaCliente.actualizarPuntos(cedula, nuevosPuntos);
-                this.logicaCompra.agregarCompra(id, cedula);
+                this.logicaCompra.agregarCompra(new CompraDTO(id, cedula));
                 return new RespuestaDTO("Canjeo realizado con exito");
             } else {
                 return new RespuestaDTO("Cantidad de puntos insuficientes");

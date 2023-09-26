@@ -17,7 +17,7 @@ public class ClienteController {
     private LogicaCliente logica;
 
     @GetMapping(path = "/cliente/mostrartodos")
-    public List<ClienteBD> mostrarClientes() {
+    public List<ClienteDTO> mostrarClientes() {
         return this.logica.mostrarClientes();
     }
 

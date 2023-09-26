@@ -5,8 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ClienteDTO {
-    private int cedula;
-    private String nombre;
-    private String apellido;
+public class CompraDTO {
+    private int cedulaUsuario;
+    private int idProdcuto;
 }

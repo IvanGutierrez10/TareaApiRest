@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -44,8 +45,11 @@ public class LogicaCliente {
         }
     }
 
-    public List<ClienteBD> mostrarClientes() {
-        return this.clienteRepository.findAll();
+    public List<ClienteDTO> mostrarClientes() {
+        return this.clienteRepository.findAll()
+                .stream()
+                .map(ClienteBD -> new ClienteDTO(ClienteBD.getCedula(), ClienteBD.getNombre(),
+                        ClienteBD.getApellido())).collect(Collectors.toList());
     }
 
     public boolean clienteExiste(int cedula) {

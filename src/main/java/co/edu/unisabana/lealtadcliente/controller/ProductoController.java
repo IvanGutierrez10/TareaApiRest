@@ -16,7 +16,7 @@ public class ProductoController {
     private LogicaProducto Logica;
 
     @GetMapping(path = "/productos/mostrartodos")
-    public List<ProductoRedimibleBD> mostrarProductos() {
+    public List<ProductoRedimibleDTO> mostrarProductos() {
         return this.Logica.mostrarProductos();
     }
 
