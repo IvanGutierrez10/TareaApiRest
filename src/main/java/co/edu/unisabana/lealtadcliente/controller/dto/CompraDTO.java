@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class CompraDTO {
-    private int cedulaUsuario;
+    private int cedulaUsuario
     private int idProdcuto;
 }
