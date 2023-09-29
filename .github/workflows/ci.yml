@@ -26,7 +26,7 @@ jobs:
         # generates coverage-report.md and publishes as checkrun jacoco
       - name: JaCoCo Coverage
       - name: Ejecutar Test de cobertura
-          run: ./gradlew jacocoTestReport
+        run: ./gradlew jacocoTestReport
       - name: Crear un distintivo JaCoCo
         uses: cicirello/jacoco-badge-generator@v2
           with:
