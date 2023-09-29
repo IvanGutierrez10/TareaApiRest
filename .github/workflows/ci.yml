@@ -26,14 +26,14 @@ jobs:
         with:
           arguments: build
         # generates coverage-report.md and publishes as checkrun jacoco
-      - name: JaCoCo Coverage
-      jobs:
-        jacoco-java-gradle:
-          steps:
-          - name: Ejecutar Test de cobertura
-            run: ./gradlew jacocoTestReport
-          - name: Crear un distintivo JaCoCo
-            uses: cicirello/jacoco-badge-generator@v2
-            with:
-              generate-branches-badge: true
-              jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
+      - name: Ejecutar Test
+        run: ./gradlew test
+
+      - name: Ejecutar Test de cobertura
+        run: ./gradlew jacocoTestReport
+
+      - name: Crear un distintivo JaCoCo
+          uses: cicirello/jacoco-badge-generator@v2
+          with:
+            generate-branches-badge: true
+            jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
