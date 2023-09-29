@@ -1,4 +1,4 @@
-package co.edu.unisabana.lealtadcliente.swagger;
+package co.edu.unisabana.lealtadcliente.docs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
