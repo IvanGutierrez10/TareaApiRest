@@ -1,6 +1,8 @@
 name: Continous Integration
 
 on:
+  push:
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -25,10 +27,13 @@ jobs:
           arguments: build
         # generates coverage-report.md and publishes as checkrun jacoco
       - name: JaCoCo Coverage
-      - name: Ejecutar Test de cobertura
-        run: ./gradlew jacocoTestReport
-      - name: Crear un distintivo JaCoCo
-        uses: cicirello/jacoco-badge-generator@v2
-        with:
-          generate-branches-badge: true
-          jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
+      jobs:
+        jacoco-java-gradle:
+          steps:
+          - name: Ejecutar Test de cobertura
+            run: ./gradlew jacocoTestReport
+          - name: Crear un distintivo JaCoCo
+            uses: cicirello/jacoco-badge-generator@v2
+            with:
+              generate-branches-badge: true
+              jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
