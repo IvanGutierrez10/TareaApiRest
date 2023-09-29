@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ClienteDTO {
-    private int cedula;
+    private int cedula
     private String nombre;
     private String apellido;
 }
