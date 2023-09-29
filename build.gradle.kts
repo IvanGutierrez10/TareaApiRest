@@ -2,6 +2,7 @@ plugins {
 	java
 	id("org.springframework.boot") version "2.7.15"
 	id("io.spring.dependency-management") version "1.0.15.RELEASE"
+	id("jacoco")
 }
 
 group = "co.edu.unisabana"
@@ -28,3 +29,33 @@ dependencies {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+jacoco{
+	toolVersion="0.8.9"
+}
+tasks.named<Test>("test") {
+	finalizedBy("jacocoTestReport")
+}
+
+tasks.named<JacocoReport>("jacocoTestReport") {
+	reports {
+		csv.required.set(true)
+	}
+}
+
+afterEvaluate {
+	tasks.named<JacocoReport>("jacocoTestReport") {
+		classDirectories.setFrom(classDirectories.files.map { dir ->
+			fileTree(dir) {
+				exclude(
+					"co/edu/unisabana/lealtadcliente/controller/dto",
+					"co/edu/unisabana/lealtadcliente/bd"
+				)
+			}
+		})
+	}
+}
+
+
+
+
