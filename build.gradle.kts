@@ -24,6 +24,8 @@ dependencies {
 	implementation("mysql:mysql-connector-java:8.0.32")
 	compileOnly("org.projectlombok:lombok:1.18.24")
 	annotationProcessor("org.projectlombok:lombok:1.18.24")
+	implementation ("io.springfox:springfox-swagger2:3.0.0")
+	implementation ("io.springfox:springfox-swagger-ui:3.0.0")
 }
 
 tasks.withType<Test> {
