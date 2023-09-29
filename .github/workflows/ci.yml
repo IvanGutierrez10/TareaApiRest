@@ -33,7 +33,7 @@ jobs:
         run: ./gradlew jacocoTestReport
 
       - name: Crear un distintivo JaCoCo
-          uses: cicirello/jacoco-badge-generator@v2
+        uses: cicirello/jacoco-badge-generator@v2
           with:
             generate-branches-badge: true
             jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
