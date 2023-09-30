@@ -1,6 +1,5 @@
 package co.edu.unisabana.lealtadcliente.controller;
 
-import co.edu.unisabana.lealtadcliente.bd.CompraBD;
 import co.edu.unisabana.lealtadcliente.controller.dto.CompraDTO;
 import co.edu.unisabana.lealtadcliente.logica.LogicaCompra;
 import lombok.AllArgsConstructor;
