@@ -4,7 +4,6 @@ import co.edu.unisabana.lealtadcliente.bd.ClienteBD;
 import co.edu.unisabana.lealtadcliente.bd.ClienteRepository;
 import co.edu.unisabana.lealtadcliente.bd.CompraBD;
 import co.edu.unisabana.lealtadcliente.bd.CompraRepository;
-import co.edu.unisabana.lealtadcliente.controller.dto.ClienteDTO;
 import co.edu.unisabana.lealtadcliente.controller.dto.CompraDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
