@@ -12,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ class LogicaCompraTest {
 
     @Test
     void Dado_que_no_existan_clientes_Cuando_genere_id_Entonces_id_igual_1() {
-        int id=logicaCompra.generarID();
+        int id = logicaCompra.generarID();
         assertEquals(1, id);
     }
 
@@ -48,7 +49,7 @@ class LogicaCompraTest {
         compras.add(compraBD);
         Mockito.when(compraRepository.findAll()).thenReturn(compras);
 
-        int id=logicaCompra.generarID();
+        int id = logicaCompra.generarID();
         assertEquals(2, id);
     }
 
@@ -85,10 +86,10 @@ class LogicaCompraTest {
     @Test
     void Dada_la_cedula_de_un_cliente_que_no_existe_Cuando_obtener_compras_Entonces_arroja_excepcion() {
 
-        int cedula=1111;
+        int cedula = 1111;
         Mockito.when(clienteRepository.findById(cedula)).thenReturn(null);
 
-        assertThrows(RuntimeException.class, ()->{
+        assertThrows(RuntimeException.class, () -> {
             List<CompraDTO> comprasCliente = logicaCompra.obtenerCompras(1111);
         });
     }

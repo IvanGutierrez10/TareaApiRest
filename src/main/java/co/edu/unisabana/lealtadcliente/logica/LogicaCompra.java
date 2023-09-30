@@ -7,6 +7,7 @@ import co.edu.unisabana.lealtadcliente.bd.CompraRepository;
 import co.edu.unisabana.lealtadcliente.controller.dto.CompraDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,7 +48,7 @@ public class LogicaCompra {
         return cliente.getCompras()
                 .stream()
                 .map(CompraBD -> new CompraDTO(CompraBD.getCedulaUsuario(), CompraBD.getIdProdcuto()))
-                        .collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 
 }
