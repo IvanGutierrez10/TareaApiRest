@@ -35,12 +35,12 @@ public class ProductoControllerTest {
     }
 
     @Test
-    public void Dado_ningun_producto_redimible_creado_Cuando_mostrar_productos_Entonces_lista_de_productos_redimibles_size_0() {
+    public void Dado_un_producto_redimible_creado_Cuando_mostrar_productos_Entonces_lista_de_productos_redimibles_size_1() {
         ParameterizedTypeReference<List<ProductoRedimibleDTO>> responseType = new ParameterizedTypeReference<List<ProductoRedimibleDTO>>() {
         };
         ResponseEntity<List<ProductoRedimibleDTO>> respuesta = restTemplate.exchange("/productos/mostrartodos", HttpMethod.GET, null, responseType);
         List<ProductoRedimibleDTO> productos = respuesta.getBody();
-        Assertions.assertEquals(0, productos.size());
+        Assertions.assertEquals(1, productos.size());
     }
 
     @Test
