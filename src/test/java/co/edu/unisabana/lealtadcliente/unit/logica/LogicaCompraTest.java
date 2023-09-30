@@ -5,7 +5,6 @@ import co.edu.unisabana.lealtadcliente.bd.ClienteRepository;
 import co.edu.unisabana.lealtadcliente.bd.CompraBD;
 import co.edu.unisabana.lealtadcliente.bd.CompraRepository;
 import co.edu.unisabana.lealtadcliente.controller.dto.CompraDTO;
-import co.edu.unisabana.lealtadcliente.logica.LogicaCliente;
 import co.edu.unisabana.lealtadcliente.logica.LogicaCompra;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,7 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
