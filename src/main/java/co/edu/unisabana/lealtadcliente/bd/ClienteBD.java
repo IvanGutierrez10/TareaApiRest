@@ -1,6 +1,7 @@
 package co.edu.unisabana.lealtadcliente.bd;
 
 import lombok.Data;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;

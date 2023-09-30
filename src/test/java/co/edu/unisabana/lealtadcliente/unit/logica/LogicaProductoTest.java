@@ -13,8 +13,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -50,7 +52,7 @@ class LogicaProductoTest {
 
     @Test
     void Dado_que_no_existan_productos_Cuando_genere_id_Entonces_id_igual_1() {
-        int id=logicaProducto.generarID();
+        int id = logicaProducto.generarID();
         assertEquals(1, id);
     }
 
@@ -66,7 +68,7 @@ class LogicaProductoTest {
 
         Mockito.when(productoRepository.findAll()).thenReturn(productos);
 
-        int id=logicaProducto.generarID();
+        int id = logicaProducto.generarID();
         assertEquals(2, id);
     }
 

@@ -11,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -35,6 +36,7 @@ class LogicaClienteTest {
         assertEquals(respuestaEsperada, respuesta);
     }
 
+
     @Test
     void Dado_cliente_que_ya_existe_Cuando_guarde_Entonces_no_se_guarda() {
         ClienteDTO cliente = new ClienteDTO(123, "Ivan", "Gutierrez");
@@ -43,6 +45,7 @@ class LogicaClienteTest {
         RespuestaDTO respuestaEsperada = new RespuestaDTO("Ya existe un usuario registrado con esa cedula");
         assertEquals(respuestaEsperada, respuesta);
     }
+
 
     @Test
     void Dado_cliente_que_ya_existe_Cuando_actualice_puntos_Entonces_se_actualiza() {
