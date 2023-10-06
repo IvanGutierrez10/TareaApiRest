@@ -3,13 +3,14 @@ plugins {
 	id("org.springframework.boot") version "2.7.15"
 	id("io.spring.dependency-management") version "1.0.15.RELEASE"
 	id("jacoco")
+    id("info.solidsoft.pitest") version "1.9.0"
 }
 
 group = "co.edu.unisabana"
 version = "0.0.1-SNAPSHOT"
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_20
+	sourceCompatibility = JavaVersion.VERSION_17
 }
 
 repositories {
@@ -58,6 +59,12 @@ afterEvaluate {
 	}
 }
 
-
+pitest {
+     junit5PluginVersion.set("1.0.0")
+    excludedClasses.addAll(
+    	"co/edu/unisabana/lealtadcliente/controller/dto.**",
+    	"co/edu/unisabana/lealtadcliente/bd.**"
+    )
+}
 
 
