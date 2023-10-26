@@ -4,6 +4,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.0.15.RELEASE"
 	id("jacoco")
     id("info.solidsoft.pitest") version "1.9.0"
+	id("org.sonarqube") version "4.4.1.3373"
 }
 
 group = "co.edu.unisabana"
@@ -67,4 +68,9 @@ pitest {
     )
 }
 
+sonarqube {
+	properties {
+		property("sonar.projectName", "Lealtadcliente")
+	}
+}
 
