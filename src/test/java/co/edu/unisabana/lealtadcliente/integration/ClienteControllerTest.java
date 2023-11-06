@@ -28,14 +28,14 @@ public class ClienteControllerTest {
     TestRestTemplate restTemplate;
 
     @Test
-    public void Dado_un_cliente_dto_Cuando_agregar_cliente_Entonces_se_agrega() {
+    void Dado_un_cliente_dto_Cuando_agregar_cliente_Entonces_se_agrega() {
         ClienteDTO cliente = new ClienteDTO(242750, "Sebastian", "Pardo");
         ResponseEntity<RespuestaDTO> respuesta = restTemplate.postForEntity("/cliente/agregar", cliente, RespuestaDTO.class);
         assertEquals("Cliente creado con exito", respuesta.getBody().getMensaje());
     }
 
     @Test
-    public void Dado_ningun_cliente_creado_Cuando_mostrar_cliente_Entonces_lista_de_clientes_size_0() {
+    void Dado_ningun_cliente_creado_Cuando_mostrar_cliente_Entonces_lista_de_clientes_size_0() {
         ParameterizedTypeReference<List<ClienteDTO>> responseType = new ParameterizedTypeReference<List<ClienteDTO>>() {
         };
         ResponseEntity<List<ClienteDTO>> respuesta = restTemplate.exchange("/cliente/mostrartodos", HttpMethod.GET, null, responseType);
@@ -44,7 +44,7 @@ public class ClienteControllerTest {
     }
 
     @Test
-    public void Dado_un_usuario_que_no_existe_Cuando_actualizar_puntos_Entonces_no_se_actualiza() {
+    void Dado_un_usuario_que_no_existe_Cuando_actualizar_puntos_Entonces_no_se_actualiza() {
         ResponseEntity<RespuestaDTO> respuesta = restTemplate.exchange(
                 "/cliente/actualizarpuntos/123/100",
                 HttpMethod.PUT,
