@@ -28,14 +28,14 @@ public class ProductoControllerTest {
     TestRestTemplate restTemplate;
 
     @Test
-    public void Dado_un_producto_dto_Cuando_agregar_producto_Entonces_se_agrega() {
+    void Dado_un_producto_dto_Cuando_agregar_producto_Entonces_se_agrega() {
         ProductoRedimibleDTO producto = new ProductoRedimibleDTO("Bono Comida", CategoriaProductoEnum.BONOS, 400);
         ResponseEntity<RespuestaDTO> respuesta = restTemplate.postForEntity("/productos/agregar", producto, RespuestaDTO.class);
         assertEquals("Producto creado exitosamente", respuesta.getBody().getMensaje());
     }
 
     @Test
-    public void Dado_un_producto_redimible_creado_Cuando_mostrar_productos_Entonces_lista_de_productos_redimibles_size_1() {
+    void Dado_un_producto_redimible_creado_Cuando_mostrar_productos_Entonces_lista_de_productos_redimibles_size_1() {
         ParameterizedTypeReference<List<ProductoRedimibleDTO>> responseType = new ParameterizedTypeReference<List<ProductoRedimibleDTO>>() {
         };
         ResponseEntity<List<ProductoRedimibleDTO>> respuesta = restTemplate.exchange("/productos/mostrartodos", HttpMethod.GET, null, responseType);
@@ -44,7 +44,7 @@ public class ProductoControllerTest {
     }
 
     @Test
-    public void Dado_un_usuario_que_no_existe_Cuando_redimir_producto_Entonces_no_redimir() {
+    void Dado_un_usuario_que_no_existe_Cuando_redimir_producto_Entonces_no_redimir() {
         ResponseEntity<RespuestaDTO> respuesta = restTemplate.exchange(
                 "/productos/redimirproducto/567/123",
                 HttpMethod.PUT,
