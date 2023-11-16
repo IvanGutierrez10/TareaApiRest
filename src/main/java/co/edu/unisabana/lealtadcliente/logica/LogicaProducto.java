@@ -21,7 +21,6 @@ public class LogicaProducto {
 
     public void agregarProducto(ProductoRedimibleDTO productoRedimibleDTO) {
         ProductoRedimibleBD nuevoProducto = new ProductoRedimibleBD();
-        nuevoProducto.setId(generarID());
         nuevoProducto.setNombre(productoRedimibleDTO.getNombre());
         nuevoProducto.setCategoria(String.valueOf(productoRedimibleDTO.getCategoria()));
         nuevoProducto.setValor(productoRedimibleDTO.getValor());
@@ -34,19 +33,6 @@ public class LogicaProducto {
                 .map(ProductoRedimibleBD -> new ProductoRedimibleDTO(ProductoRedimibleBD.getNombre(),
                         CategoriaProductoEnum.valueOf(ProductoRedimibleBD.getCategoria()),
                         ProductoRedimibleBD.getValor())).collect(Collectors.toList());
-    }
-
-    public int generarID() {
-        int id = 0;
-        List<ProductoRedimibleBD> productos = this.productoRepository.findAll();
-        if (productos.isEmpty()) {
-            id = 1;
-        } else {
-            int tamano = productos.size() - 1;
-            ProductoRedimibleBD ultimoProducto = productos.get(tamano);
-            id = ultimoProducto.getId() + 1;
-        }
-        return id;
     }
 
     public boolean puntosSuficientes(int id, int cedula) {

@@ -51,28 +51,6 @@ class LogicaProductoTest {
     }
 
     @Test
-    void Dado_que_no_existan_productos_Cuando_genere_id_Entonces_id_igual_1() {
-        int id = logicaProducto.generarID();
-        assertEquals(1, id);
-    }
-
-    @Test
-    void Dado_que_exista_1_producto_Cuando_genere_id_Entonces_genera_id_igual_a_2() {
-        List<ProductoRedimibleBD> productos = new ArrayList<>();
-        ProductoRedimibleBD producto = new ProductoRedimibleBD();
-        producto.setId(1);
-        producto.setNombre("Ps5");
-        producto.setCategoria(String.valueOf(CategoriaProductoEnum.TECNOLOGIA));
-        producto.setValor(2000);
-        productos.add(producto);
-
-        Mockito.when(productoRepository.findAll()).thenReturn(productos);
-
-        int id = logicaProducto.generarID();
-        assertEquals(2, id);
-    }
-
-    @Test
     void Dado_un_cliente_con_puntos_suficientes_Cuando_se_verifica_puntos_suficientes_Entonces_retorna_true() {
         int id = 123;
         int cedula = 1091;

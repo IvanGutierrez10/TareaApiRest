@@ -19,24 +19,9 @@ public class LogicaCompra {
     private CompraRepository compraRepository;
     private ClienteRepository clienteRepository;
 
-    public int generarID() {
-        int id = 0;
-        List<CompraBD> compras = this.compraRepository.findAll();
-        if (compras.isEmpty()) {
-            id = 1;
-        } else {
-            int tamano = compras.size() - 1;
-            CompraBD ultimaCompra = compras.get(tamano);
-            id = ultimaCompra.getIdCompra() + 1;
-        }
-
-        return id;
-    }
-
     public void agregarCompra(CompraDTO compra) {
         CompraBD compraBD = new CompraBD();
         compraBD.setCedulaUsuario(compra.getCedulaUsuario());
-        compraBD.setIdCompra(generarID());
         compraBD.setIdProdcuto(compra.getIdProdcuto());
         compraBD.setFechaTransaccion(LocalDateTime.now());
         this.compraRepository.save(compraBD);
