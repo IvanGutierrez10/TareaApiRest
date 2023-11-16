@@ -33,27 +33,6 @@ class LogicaCompraTest {
     private LogicaCompra logicaCompra;
 
     @Test
-    void Dado_que_no_existan_clientes_Cuando_genere_id_Entonces_id_igual_1() {
-        int id = logicaCompra.generarID();
-        assertEquals(1, id);
-    }
-
-    @Test
-    void Dado_que_exista_1_cliente_Cuando_genere_id_Entonces_genera_id_igual_a_2() {
-        List<CompraBD> compras = new ArrayList<>();
-        CompraBD compraBD = new CompraBD();
-        compraBD.setCedulaUsuario(123);
-        compraBD.setIdCompra(1);
-        compraBD.setIdProdcuto(456);
-        compraBD.setFechaTransaccion(LocalDateTime.now());
-        compras.add(compraBD);
-        Mockito.when(compraRepository.findAll()).thenReturn(compras);
-
-        int id = logicaCompra.generarID();
-        assertEquals(2, id);
-    }
-
-    @Test
     void Dada_una_compra_dto_Cuando_agregar_compra_Entonces_se_guarda_la_compra() {
         CompraDTO compra = new CompraDTO(123, 456);
         logicaCompra.agregarCompra(compra);
