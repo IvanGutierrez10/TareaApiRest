@@ -48,8 +48,8 @@ public class LogicaCliente {
     public List<ClienteDTO> mostrarClientes() {
         return this.clienteRepository.findAll()
                 .stream()
-                .map(ClienteBD -> new ClienteDTO(ClienteBD.getCedula(), ClienteBD.getNombre(),
-                        ClienteBD.getApellido())).collect(Collectors.toList());
+                .map(clienteBd -> new ClienteDTO(clienteBd.getCedula(), clienteBd.getNombre(),
+                        clienteBd.getApellido())).collect(Collectors.toList());
     }
 
     public boolean clienteExiste(int cedula) {

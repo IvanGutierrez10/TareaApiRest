@@ -8,8 +8,4 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles(profiles = "test")
 class LealtadclienteApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-
 }

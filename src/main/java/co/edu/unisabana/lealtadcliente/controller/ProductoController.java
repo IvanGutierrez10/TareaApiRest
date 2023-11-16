@@ -12,21 +12,21 @@ import java.util.List;
 @AllArgsConstructor
 public class ProductoController {
 
-    private LogicaProducto Logica;
+    private LogicaProducto logica;
 
     @GetMapping(path = "/productos/mostrartodos")
     public List<ProductoRedimibleDTO> mostrarProductos() {
-        return this.Logica.mostrarProductos();
+        return this.logica.mostrarProductos();
     }
 
     @PostMapping(path = "/productos/agregar")
     public RespuestaDTO agregarProducto(@RequestBody ProductoRedimibleDTO productoRedimibleDTO) {
-        this.Logica.agregarProducto(productoRedimibleDTO);
+        this.logica.agregarProducto(productoRedimibleDTO);
         return new RespuestaDTO("Producto creado exitosamente");
     }
 
     @PutMapping(path = "/productos/redimirproducto/{id}/{cedula}")
     public RespuestaDTO redimirProducto(@PathVariable int id, @PathVariable int cedula) {
-        return this.Logica.realizarCanjeo(id, cedula);
+        return this.logica.realizarCanjeo(id, cedula);
     }
 }
