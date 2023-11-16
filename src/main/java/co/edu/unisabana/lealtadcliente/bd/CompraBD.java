@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 public class CompraBD {
     @Id
     @Column(name = "id_compra")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int idCompra;
     @Column(name = "cedula_usuario")
     private int cedulaUsuario;
