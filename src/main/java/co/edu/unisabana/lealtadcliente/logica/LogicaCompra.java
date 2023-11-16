@@ -32,7 +32,7 @@ public class LogicaCompra {
                 new RuntimeException("No existe ningun usuario registrado con esta cedula"));
         return cliente.getCompras()
                 .stream()
-                .map(CompraBD -> new CompraDTO(CompraBD.getCedulaUsuario(), CompraBD.getIdProdcuto()))
+                .map(compraBd -> new CompraDTO(compraBd.getCedulaUsuario(), compraBd.getIdProdcuto()))
                 .collect(Collectors.toList());
     }
 

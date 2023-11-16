@@ -30,9 +30,9 @@ public class LogicaProducto {
     public List<ProductoRedimibleDTO> mostrarProductos() {
         return this.productoRepository.findAll()
                 .stream()
-                .map(ProductoRedimibleBD -> new ProductoRedimibleDTO(ProductoRedimibleBD.getNombre(),
-                        CategoriaProductoEnum.valueOf(ProductoRedimibleBD.getCategoria()),
-                        ProductoRedimibleBD.getValor())).collect(Collectors.toList());
+                .map(productoRedimibleBd -> new ProductoRedimibleDTO(productoRedimibleBd.getNombre(),
+                        CategoriaProductoEnum.valueOf(productoRedimibleBd.getCategoria()),
+                        productoRedimibleBd.getValor())).collect(Collectors.toList());
     }
 
     public boolean puntosSuficientes(int id, int cedula) {
