@@ -1,0 +1,34 @@
+name: Continous Delivery
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalando Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Make Gradle script executable
+        run: chmod +x ./gradlew
+      - name: Compilar proyecto
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        with:
+          arguments: build
+      - name: Construir y push imagen docker
+        uses: mr-smithers-excellent/docker-build-push@v6
+        with:
+          image: ttariza13/lealtadcliente
+          tags: latest
+          registry: docker.io
+          dockerfile: Dockerfile
+          username: ${{ secrets.USUARIO_DOCKERHUB}}
+          password: ${{ secrets.PASS_DOCKERHUB}}
